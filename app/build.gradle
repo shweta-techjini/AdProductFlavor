@@ -17,14 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    productFlavors {
-//        free {
-//            applicationId "com.udacity.gradle.builditbigger.free"
-//        }
-//        paid {
-//            applicationId "com.udacity.gradle.builditbigger"
-//        }
-//    }
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger"
+            apply plugin: 'com.google.gms.google-services'
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
@@ -32,9 +33,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':displayjoke')
     compile project(path: ':JokeBackend', configuration: 'android-endpoints')
-    compile 'com.google.firebase:firebase-ads:9.4.0'
+    freeCompile 'com.google.firebase:firebase-ads:9.4.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
 }
-
-apply plugin: 'com.google.gms.google-services'
