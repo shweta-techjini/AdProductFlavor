@@ -1,21 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.udacity.gradle.builditbigger.listener.EndpointsListener;
-import com.udacity.gradle.builditbigger.network.EndpointsAsycTask;
-import com.udacity.gradle.displayjoke.LibraryActivity;
 
 
-public class MainActivity extends ActionBarActivity implements EndpointsListener{
-
-//    private JokeClass jokeClass;
+public class MainActivity extends ActionBarActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +35,5 @@ public class MainActivity extends ActionBarActivity implements EndpointsListener
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view){
-        new EndpointsAsycTask(this).execute();
-    }
-
-
-    @Override
-    public void resultFromEndPoint(String response) {
-        Intent libActivity = new Intent(this, LibraryActivity.class);
-        libActivity.putExtra(getString(R.string.joke_string), response);
-        startActivity(libActivity);
-        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
     }
 }
